@@ -108,7 +108,6 @@ export default function App() {
       <div className="Movies">
         {moviesData.map((movie) => (
           <MovieCard
-            key={movie.name} // Add a unique key to each movie card
             name={movie.name}
             poster={movie.poster}
             summary={movie.summary}
