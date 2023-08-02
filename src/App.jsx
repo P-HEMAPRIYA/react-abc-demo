@@ -1,6 +1,4 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import React from "react";
 import "./App.css";
 
 export default function App() {
@@ -91,30 +89,26 @@ export default function App() {
       rating: 8.8,
     },
   ];
-
-  function MovieCard({ name, poster, summary, rating }) {
-    return (
-      <div className="Movie">
-        <img src={poster} alt={name} />
-        <h2 className="star">{name}</h2>
-        <p className="star rate">{rating}⭐</p>
-        <p>{summary}</p>
-      </div>
-    );
-  }
-
-  function Movie() {
-    return (
-      <div className="Movies">
-        {moviesData.map((movie) => (
-          <MovieCard
-            name={movie.name}
-            poster={movie.poster}
-            summary={movie.summary}
-            rating={movie.rating}
-          />
-        ))}
-      </div>
-    );
-  }
+  return (
+    <div className="Movies">
+      {moviesData.map((movie) => (
+        <MovieCard
+          name={movie.name}
+          poster={movie.poster}
+          summary={movie.summary}
+          rating={movie.rating}
+        />
+      ))}
+    </div>
+  );
+}
+function MovieCard({ name, poster, summary, rating }) {
+  return (
+    <div className="Movie">
+      <img src={poster} alt={name} />
+      <h2 className="star">{name}</h2>
+      <p className="star rate">{rating}⭐</p>
+      <p>{summary}</p>
+    </div>
+  );
 }
