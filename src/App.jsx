@@ -4,139 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 
 export default function App() {
-  <Movie />
-// //   const [count, setCount] = useState(0)
-
-// //   return (
-// //     <>
-// //       <div>
-// //         <a href="https://vitejs.dev" target="_blank">
-// //           <img src={viteLogo} className="logo" alt="Vite logo" />
-// //         </a>
-// //         <a href="https://react.dev" target="_blank">
-// //           <img src={reactLogo} className="logo react" alt="React logo" />
-// //         </a>
-// //       </div>
-// //       <h1>Vite + React</h1>
-// //       <div className="card">
-// //         <button onClick={() => setCount((count) => count + 1)}>
-// //           count is {count}
-// //         </button>
-// //         <p>
-// //           Edit <code>src/App.jsx</code> and save to test HMR
-// //         </p>
-// //       </div>
-// //       <p className="read-the-docs">
-// //         Click on the Vite and React logos to learn more
-// //       </p>
-// //     </>
-// //   )
-}
-
-// // export default App
-
-// import { useState } from "react";
-// import "./App.css";
-// export default function App() {
-//   const profiles = [
-//     {
-//       Name: "hemapriya",
-//       image:
-//         "https://i.pinimg.com/236x/e0/b9/07/e0b9075059d92d90835e49cae5212944.jpg",
-//     },
-//     {
-//       Name: "Madhu",
-//       image:
-//         "https://img.freepik.com/premium-vector/hand-drawn-beautiful-young-woman-sunglasses-stylish-girl-with-bow-her-head-fashion-woman-look_260869-4.jpg?w=2000",
-//     },
-//     {
-//       Name: "Priya",
-//       image:
-//         "https://i.pinimg.com/236x/3a/6f/ef/3a6fefb32822e267200f1a940dc665c2.jpg",
-//     },
-//   ];
-
-//   return (
-//     <div className="App">
-//       {profiles.map((profile) => (
-//         <Profile name={profile.Name} image={profile.image} />
-
-//         //<Profile name={Name} image={image} />
-//       ))}
-//       <Colorgame />
-//     </div>
-//   );
-// }
-
-// function Counter() {
-//   // let like = 10;
-//   const [like, setLike] = useState(0);
-//   const [dislike, setDislike] = useState(0);
-//   var diff = like - dislike;
-//   return (
-//     <div>
-//       <button
-//         onClick={() => {
-//           setLike(like + 1);
-//         }}
-//       >
-//         👍{like}
-//       </button>
-//       <button
-//         onClick={() => {
-//           setDislike(dislike + 1);
-//         }}
-//       >
-//         👎{dislike}
-//       </button>
-//       {diff >= 10 ? <h1>Awesome</h1> : " "};
-//     </div>
-//   );
-// }
-
-// function Colorgame() {
-//   const [bg, setbgcol] = useState("value=red");
-//   const styles = {
-//     background: bg,
-//   };
-//   const INITIAL_color_list = ["red", "orange", "pink", "crimson"];
-//   const new=[...INITIAL_color_list]
-//   const [colorlist, setcolorlist] = useState(INITIAL_color_list);
-//   return (
-//     <div>
-//       <input
-//         style={styles} ///property binding
-//         onChange={(event) => setbgcol(event.target.value)}
-//         type="text"
-//         placeholder="please"
-//       />
-
-//       <button>Addcolor</button>
-//       {colorlist.map((color) => (
-//         <colorBox clr={color} />
-//       ))}
-//     </div>
-//   );
-// }
-// function colorBox({clr}){
-//   const style={
-//     height="25px"
-
-//   }
-// }
-// function Profile({ Name, image }) {
-//   return (
-//     <div className="profile">
-//       <img className="pic" src={image} />
-//       <h2>hello {Name}</h2>
-//       <Counter />
-//       <Colorgame />
-//     </div>
-//   );
-// }
-
-export default function Movie() {
-  const Movies = [
+  const moviesData = [
     {
       name: "Vikram",
       poster:
@@ -209,8 +77,7 @@ export default function Movie() {
     },
     {
       name: "PS2",
-      poster:
-        "https://m.media-amazon.com/images/M/MV5BYjFjMTQzY2EtZjQ5MC00NGUyLWJiYWMtZDI3MTQ1MGU4OGY2XkEyXkFqcGdeQXVyNDExMjcyMzA@._V1_.jpg",
+      poster: "https://cinemachaat.files.wordpress.com/2023/05/poster.jpg",
       summary:
         "Ponniyin Selvan: I is an upcoming Indian Tamil-language epic period action film directed by Mani Ratnam, who co-wrote it with Elango Kumaravel and B. Jeyamohan",
       rating: 8,
@@ -224,17 +91,31 @@ export default function Movie() {
       rating: 8.8,
     },
   ];
-  return (
-    <div className="Movie">
-      {Movies.map((Movie) => (
-        <Movie
-          name={Movie.name}
-          poster={Movie.poster}
-          summary={Movie.summary}
-          rating={Movie.rating}
-        />
-      ))}
-      <Movies />
-    </div>
-  );
+
+  function MovieCard({ name, poster, summary, rating }) {
+    return (
+      <div className="Movie">
+        <img src={poster} alt={name} />
+        <h2 className="star">{name}</h2>
+        <p className="star rate">{rating}⭐</p>
+        <p>{summary}</p>
+      </div>
+    );
+  }
+
+  function Movie() {
+    return (
+      <div className="Movies">
+        {moviesData.map((movie) => (
+          <MovieCard
+            key={movie.name} // Add a unique key to each movie card
+            name={movie.name}
+            poster={movie.poster}
+            summary={movie.summary}
+            rating={movie.rating}
+          />
+        ))}
+      </div>
+    );
+  }
 }

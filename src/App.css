@@ -1,7 +1,7 @@
 
 
 
-.App {
+/* .App {
   font-family: sans-serif;
   text-align: center;
 }
@@ -11,4 +11,53 @@
   width:200px;
   object-fit: cover;
   
+} */
+
+
+/* styles.css */
+
+/* Style for the container of all movie cards */
+.Movies {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  gap: 20px;
+}
+
+/* Style for individual movie card */
+.star{
+  display:inline;
+  justify-content: space-between;
+  
+}
+.rate{
+  justify-content: right;
+  
+}
+.Movie {
+  width: 250px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for movie title */
+h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* Style for movie poster */
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for movie summary */
+p {
+  font-size: 14px;
+  line-height: 1.5;
 }
