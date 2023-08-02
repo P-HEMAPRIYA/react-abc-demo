@@ -18,21 +18,22 @@
 
 /* Style for the container of all movie cards */
 .Movies {
+  width: 250px;;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr ;
   gap: 20px;
 }
 
 /* Style for individual movie card */
-.star{
+.spec{
   display:flex;
   justify-content: space-between;
+  align-items: center;
   
 }
-.rate{
-  justify-content: right;
+
   
-}
+
 .Movie {
   width: 250px;
   background-color: #f7f7f7;
