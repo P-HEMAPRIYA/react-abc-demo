@@ -107,7 +107,7 @@ function MovieCard({ name, poster, summary, rating }) {
     <div className="Movie">
       <img src={poster} alt={name} />
       <h2 className="star">{name}</h2>
-      <p className="star rate">{rating}⭐</p>
+      <h2 className="star rate">{rating}⭐</h2>
       <p>{summary}</p>
     </div>
   );

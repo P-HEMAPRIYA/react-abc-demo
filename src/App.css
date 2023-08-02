@@ -25,7 +25,7 @@
 
 /* Style for individual movie card */
 .star{
-  display:inline;
+  display:flex;
   justify-content: space-between;
   
 }
