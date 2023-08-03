@@ -16,24 +16,20 @@
 
 /* styles.css */
 
+
 /* Style for the container of all movie cards */
-.Movies {
-  width: 250px;;
+.Movies{
+  width: 150px;;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr ;
-  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr  ;
+  gap: 5px;
 }
 
 /* Style for individual movie card */
 .spec{
   display:flex;
   justify-content: space-between;
-  align-items: center;
-  
 }
-
-  
-
 .Movie {
   width: 250px;
   background-color: #f7f7f7;
@@ -62,3 +58,5 @@ p {
   font-size: 14px;
   line-height: 1.5;
 }
+
+
