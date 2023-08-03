@@ -1,4 +1,9 @@
 import { useState } from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import { useNavigate } from "react-router-dom";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function MovieList() {
   const [name, setname] = useState("name");
@@ -98,55 +103,61 @@ export default function MovieList() {
 
   return (
     <div>
-      <input
+      <TextField
         ///property binding
         onChange={(event) => setname(event.target.value)}
         type="text"
-        placeholder="name"
+        label="name"
         value={name}
       />
-      {name}
-      <input
+
+      <TextField
         ///property binding
         onChange={(event) => setposter(event.target.value)}
         type="text"
-        placeholder="poster"
+        label="poster"
       />
-      {poster}
-      <input
+
+      <TextField
         ///property binding
         onChange={(event) => setrating(event.target.value)}
         type="text"
-        placeholder="rating"
+        label="rating"
       />
-      {rating}
-      <input
+
+      <TextField
         ///property binding
+
         onChange={(event) => setsummary(event.target.value)}
-        type="text"
-        placeholder="summary"
+        type="boolean"
+        label="summary"
       />
-      {summary}
-      <button
+
+      <Button
+        variant="contained"
         onClick={(event) =>
           setmovielist([
             ...movielist,
             {
               name: name,
+
               poster: poster,
 
               rating: rating,
+
               summary: summary,
             },
           ])
         }
       >
         Add Movie
-      </button>
+      </Button>
+
       <div className="Movies">
         {movielist.map((movie, index) => (
           <Movie
-            key={movie.index}
+            key={index}
+            id={index}
             name={movie.name}
             poster={movie.poster}
             summary={movie.summary}
@@ -158,15 +169,30 @@ export default function MovieList() {
   );
 }
 
-function Movie({ name, poster, summary, rating }) {
+function Movie({ name, poster, summary, rating, id }) {
+  const [hide, sethide] = useState(true);
+  const navigate = useNavigate();
   return (
     <div className="Movie">
       <img src={poster} alt={name} />
       <div className="spec">
-        <h2>{name}</h2>
+        <h2>
+          {name}- {id}
+        </h2>
         <p> ⭐ {rating}</p>
       </div>
-      <p>{summary}</p>
+      <button
+        onClick={() => {
+          sethide(hide == true ? false : true);
+        }}
+      >
+        toggle Summary-{hide + " "}
+      </button>
+      <button onClick={() => navigate("/movies/" + id)}>Details</button>
+      {/* <IconButton aria-label="delete">
+        <DeleteIcon />
+      </IconButton> */}
+      {hide == false ? <p>{summary}</p> : " "};
     </div>
   );
 }
