@@ -98,12 +98,11 @@ function Movie({ name, poster, summary, rating, id }) {
       >
         toggle Summary-{hide + " "}
       </button>
-      <button>Details</button>
+      <button onClick={() => navigate("/movies/" + id)}>Details</button>
       {/* <IconButton aria-label="delete">
         <DeleteIcon />
       </IconButton> */}
-      {hide == false ? <p>{summary}</p> : " "};onClick=
-      {() => navigate("/movies/" + id)}
+      {hide == false ? <p>{summary}</p> : " "}
     </div>
   );
 }
