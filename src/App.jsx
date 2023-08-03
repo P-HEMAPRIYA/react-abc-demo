@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import IconButton from "@mui/material/IconButton";
 
 // import { MovieCard } from "./MovieCard";
 
@@ -102,7 +104,7 @@ export default function App() {
     {
       name: "PS2",
       poster:
-        "https://m.media-amazon.com/images/M/MV5BYjFjMTQzY2EtZjQ5MC00NGUyLWJiYWMtZDI3MTQ1MGU4OGY2XkEyXkFqcGdeQXVyNDExMjcyMzA@._V1_.jpg",
+        "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202211/ponniyin_selvan_2_release_date_april_28-three_four.jpg?VersionId=sImzPiYMOP_IVZASz4jYMfmcUuyA6lQT",
       summary:
         "Ponniyin Selvan: I is an upcoming Indian Tamil-language epic period action film directed by Mani Ratnam, who co-wrote it with Elango Kumaravel and B. Jeyamohan",
       rating: 8,
@@ -132,9 +134,9 @@ export default function App() {
         <li>
           <Link to="/movies">MovieList</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="*">not found</Link>
-        </li>
+        </li> */}
         {/* <li>
           <Link to="/movies/id">details</Link>
         </li> */}
@@ -142,6 +144,7 @@ export default function App() {
 
       <Routes>
         <Route path="/home" element={<Home />} />
+
         <Route path="/movies" element={<MovieList movielist={movielist} />} />
         <Route
           path="/movies/:id"
@@ -175,14 +178,19 @@ function MovieDetails({ movielist }) {
         allowfullscreen
       ></iframe>
       <div className="spec">
-        <h2>
-          {abc.name}- {id}
-        </h2>
+        <h2>{abc.name}</h2>
         <p> ⭐ {abc.rating}</p>
       </div>
 
       <p>{abc.summary}</p>
-      <button onClick={() => navigate(-1)}>back</button>
+
+      <IconButton
+        aria-label="Go back"
+        onClick={() => navigate(-1)}
+        sx={{ color: "blue" }} // Custom style to set the color to blue
+      >
+        <ArrowBackIcon />
+      </IconButton>
     </div>
   );
 }

@@ -4,6 +4,9 @@ import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
+import InfoIcon from "@mui/icons-material/Info";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 export default function MovieList({ movielist }) {
   const [name, setname] = useState("name");
@@ -96,12 +99,15 @@ function Movie({ name, poster, summary, rating, id }) {
           sethide(hide == true ? false : true);
         }}
       >
-        toggle Summary-{hide + " "}
+        toggle Summary {hide ? <ExpandMoreIcon /> : <ExpandLessIcon />}
       </button>
-      <button onClick={() => navigate("/movies/" + id)}>Details</button>
-      {/* <IconButton aria-label="delete">
-        <DeleteIcon />
-      </IconButton> */}
+      <IconButton
+        aria-label="details"
+        onClick={() => navigate("/movies/" + id)}
+      >
+        <InfoIcon />
+      </IconButton>
+
       {hide == false ? <p>{summary}</p> : " "}
     </div>
   );
