@@ -82,9 +82,6 @@ export default function MovieList() {
             poster={movie.poster}
             summary={movie.summary}
             rating={movie.rating}
-            deleteButton={
-              <button onClick={() => console.log(movie.id)}>delete</button>
-            }
           />
         ))}
       </div>
