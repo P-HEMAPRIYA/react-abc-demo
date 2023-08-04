@@ -8,7 +8,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
-export default function MovieList({ movielist }) {
+export default function MovieList({ movielist, setmovielist }) {
   const [name, setname] = useState("name");
   const [poster, setposter] = useState("poster");
   const [summary, setsummary] = useState("summary");

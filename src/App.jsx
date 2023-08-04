@@ -145,7 +145,12 @@ export default function App() {
       <Routes>
         <Route path="/home" element={<Home />} />
 
-        <Route path="/movies" element={<MovieList movielist={movielist} />} />
+        <Route
+          path="/movies"
+          element={
+            <MovieList movielist={movielist} setmovielist={setmovielist} />
+          }
+        />
         <Route
           path="/movies/:id"
           element={<MovieDetails movielist={movielist} />}
