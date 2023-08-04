@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { useState } from "react";
-import "./Counter.jsx";
+
+import { Addmovie } from "./Addmovie";
 
 // import { MovieCard } from "./MovieCard";
 
 import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
-import MovieList from "./MovieCard";
+import MovieList from "./MovieList";
 import { MovieDetails } from "./MovieDetails";
 
 export default function App() {
@@ -145,6 +146,9 @@ export default function App() {
         <li>
           <Link to="/basic-form">login</Link>
         </li>
+        <li>
+          <Link to="/Addmovie">Addmovie</Link>
+        </li>
       </ol>
 
       <Routes>
@@ -155,6 +159,7 @@ export default function App() {
 
         <Route path="*" element={<PageNotFound />} />
         <Route path="/basic-form" element={<Basicform />} />
+        <Route path="/Addmovie" element={<Addmovie />} />
 
         {/* <Route path="/movies:id" element={<MovieList />} /> */}
       </Routes>

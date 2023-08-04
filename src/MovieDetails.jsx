@@ -42,7 +42,6 @@ export function MovieDetails() {
       >
         <ArrowBackIcon />
       </IconButton>
-      <button onClick={() => console.log(id)}>delete</button>
     </div>
   );
 }
