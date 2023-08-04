@@ -1,0 +1,12 @@
+// import { useFormik } from "formik";
+// import { type } from "os";
+// export function Basicform(){
+//     const formik = useformik();
+//     return(
+//         <form>
+//         <input type="email" placeholder="email"/>
+//         <input/>
+//         <input/>
+//         </form>
+//     )
+// }

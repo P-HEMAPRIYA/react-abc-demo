@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
@@ -8,11 +8,18 @@ import InfoIcon from "@mui/icons-material/Info";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
-export default function MovieList({ movielist, setmovielist }) {
+export default function MovieList() {
   const [name, setname] = useState("name");
   const [poster, setposter] = useState("poster");
   const [summary, setsummary] = useState("summary");
   const [rating, setrating] = useState("rating");
+
+  const [movielist, setmovielist] = useState([]);
+  useEffect(() => {
+    fetch("https://64c3962467cfdca3b65fef89.mockapi.io/Movie")
+      .then((res) => res.json())
+      .then((data) => setmovielist(data));
+  }, []);
 
   return (
     <div>
@@ -70,11 +77,14 @@ export default function MovieList({ movielist, setmovielist }) {
         {movielist.map((movie, index) => (
           <Movie
             key={index}
-            id={index}
+            id={movie.id}
             name={movie.name}
             poster={movie.poster}
             summary={movie.summary}
             rating={movie.rating}
+            deleteButton={
+              <button onClick={() => console.log(movie.id)}>delete</button>
+            }
           />
         ))}
       </div>
