@@ -160,6 +160,7 @@ export default function App() {
         <Route path="*" element={<PageNotFound />} />
         <Route path="/basic-form" element={<Basicform />} />
         <Route path="/Addmovie" element={<Addmovie />} />
+        <Route path="/editmovie" element={<editmovie />} />
 
         {/* <Route path="/movies:id" element={<MovieList />} /> */}
       </Routes>

@@ -24,6 +24,13 @@ export default function MovieList() {
       .then(() => getmovies());
   };
 
+  const editmovie = (id) => {
+    console.log("editing.....", id);
+    fetch("https://64c3962467cfdca3b65fef89.mockapi.io/Movie/" + id, {
+      method: "PUT",
+    }).then((res) => res.json());
+  };
+
   // const Addmovie=()=>{
   //   const jsonData={name,poster,rating,summary},
   //   fetch('https://64c3962467cfdca3b65fef89.mockapi.io/Movie', {
@@ -53,6 +60,9 @@ export default function MovieList() {
           rating={movie.rating}
           deleteButton={
             <button onClick={() => deletemovie(movie.id)}>Hema delete</button>
+          }
+          editbutton={
+            <button onClick={() => editmovie(movie.id)}>editbutton</button>
           }
         />
       ))}

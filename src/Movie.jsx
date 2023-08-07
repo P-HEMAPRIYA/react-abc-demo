@@ -5,7 +5,15 @@ import InfoIcon from "@mui/icons-material/Info";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
-export function Movie({ name, poster, summary, rating, id, deleteButton }) {
+export function Movie({
+  name,
+  poster,
+  summary,
+  rating,
+  id,
+  deleteButton,
+  editbutton,
+}) {
   const [hide, sethide] = useState(true);
   const navigate = useNavigate();
   return (
@@ -31,6 +39,7 @@ export function Movie({ name, poster, summary, rating, id, deleteButton }) {
         <InfoIcon />
       </IconButton>
       {deleteButton}
+      {editbutton}
       {hide == false ? <p>{summary}</p> : " "}
     </div>
   );

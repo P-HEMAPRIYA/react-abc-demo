@@ -3,62 +3,93 @@ import TextField from "@mui/material/TextField";
 import { Movie } from "./Movie";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 export function Addmovie() {
-  const [name, setname] = useState("name");
-  const [poster, setposter] = useState("poster");
-  const [summary, setsummary] = useState("summary");
-  const [rating, setrating] = useState("rating");
-
-  const [movielist, setmovielist] = useState([]);
   const navigate = useNavigate();
+  const formValidationSchema = Yup.object().shape({
+    Name: Yup.string().min(10),
+    Poster: Yup.string().min(20),
+    Summary: Yup.string().min(10),
+    Rating: Yup.number().min(1).max(10),
+    Trailer: Yup.string().min(20),
+  });
 
-  const addmovie = () => {
-    const jsonData = {
-      name,
-      poster,
-      summary,
-      rating,
-    };
-    fetch("https://64cc7dce2eafdcdc8519e155.mockapi.io/movies/", {
-      method: "POST",
-      body: JSON.stringify(jsonData),
-      headers: {
-        "Content-Type": "application/json",
+  const { handleSubmit, handleChange, handleBlur, values, touched, errors } =
+    useFormik({
+      initialValues: {
+        name: "",
+        poster: "",
+        summary: "",
+        rating: "",
+        trailer: "",
       },
-    }).then(() => navigate("/movies"));
-  };
+      validationSchema: formValidationSchema,
+      onSubmit: (values) => {
+        fetch("https://64cc7dce2eafdcdc8519e155.mockapi.io/movies/", {
+          method: "POST",
+          body: JSON.stringify(values),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then(() => navigate("/movies"));
+      },
+    });
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <TextField
-        ///property binding
-        onChange={(event) => setname(event.target.value)}
+        name="name"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.name}
         type="text"
-        label="name"
-        value={name}
+        placeholder="Movie name"
+        required
       />
+      {touched.name && errors.name ? errors.name : null}
       <TextField
-        ///property binding
-        onChange={(event) => setposter(event.target.value)}
+        name="poster"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.poster}
         type="text"
-        label="poster"
+        placeholder="Poster URL"
+        required
       />
+      {touched.poster && errors.poster ? errors.poster : null}
       <TextField
-        ///property binding
-        onChange={(event) => setrating(event.target.value)}
+        name="summary"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.summary}
         type="text"
-        label="rating"
+        placeholder="Movie summary"
+        required
       />
+      {touched.summary && errors.summary ? errors.summary : null}
       <TextField
-        ///property binding
-        onChange={(event) => setsummary(event.target.value)}
-        type="boolean"
-        label="summary"
+        name="rating"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.rating}
+        type="text"
+        placeholder="Movie rating"
+        required
       />
-      <Button variant="contained" onClick={() => addmovie()}>
-        Add Movie
-      </Button>
-    </div>
+      {touched.rating && errors.rating ? errors.rating : null}
+      <TextField
+        name="trailer"
+        onChange={handleChange}
+        onBlur={handleBlur}
+        value={values.trailer}
+        type="text"
+        placeholder="Movie trailer"
+        required
+      />
+      {touched.trailer && errors.trailer ? errors.trailer : null}
+      <button type="submit">Add Movie</button>
+    </form>
   );
 }
